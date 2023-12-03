@@ -1,0 +1,40 @@
+model:
+  model_name: 'MinCutGCN'
+  node_dim: 2
+  node_hidden_dim: 128
+  edge_dim: 1
+  edge_hidden_dim: 1
+  output_dim: 1
+  num_layers: 1
+  dropout: 0.2
+
+data:
+  dataset: 'CiteSeer'
+  data_dir: '/home/zli/Grids/learning-spectral-clustering/data/'
+  subset: False
+
+train:
+  random_seed: 2020
+  cuda: True
+  device: 3
+  epochs: 5000
+  patience: 100
+  eval_freq: 10
+  saving_best: True
+  saving_checkpoint: True
+  checkpoint_freq: 100
+
+optimize:
+  optimizer: 'Adam'
+  lr: 0.0005
+  weight_decay: 0.005
+  momentum: 0.95
+  milestones: [800, 1600, 2400]
+  gamma: 0.5
+
+log:
+  verbose: True
+  log: True
+  log_dir: './logs'
+  wandb: False
+  wandb_project: ''
